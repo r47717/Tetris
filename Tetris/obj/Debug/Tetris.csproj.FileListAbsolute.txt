@@ -1,0 +1,14 @@
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\bin\Debug\Tetris.exe.config
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\bin\Debug\Tetris.exe
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\bin\Debug\Tetris.pdb
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\MainWindow.g.cs
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\App.g.cs
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\MainWindow.baml
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.g.resources
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.exe
+c:\users\r47717\documents\visual studio 2015\Projects\Tetris\Tetris\obj\Debug\Tetris.pdb
