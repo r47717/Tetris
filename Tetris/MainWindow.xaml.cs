@@ -32,6 +32,8 @@ namespace Tetris
         private Boolean NeedNewFigure = false;
         private Thread t;
         private Boolean stopped = false;
+        private Boolean Paused = false;
+        private int INITIAL_DELAY = 500;
         private int Delay = 500;
 
         private int FigureType = 0;
@@ -58,15 +60,70 @@ namespace Tetris
 
             field = new Color[rows, cols];
 
+            InitGame();
+
+            SynchronizationContext uiContext = SynchronizationContext.Current;
+            t = new Thread(Run);
+            t.Start(uiContext);
+        }
+
+        private void InitGame()
+        {
+            Paused = true;
+
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < cols; j++)
                     field[i, j] = EMPTY_CELL;
 
             PutNewFigure();
 
-            SynchronizationContext uiContext = SynchronizationContext.Current;
-            t = new Thread(Run);
-            t.Start(uiContext);
+            menuStart.IsEnabled = false;
+            menuStop.IsEnabled = true;
+            NeedNewFigure = false;
+            Delay = INITIAL_DELAY;
+            LinesCollapsed = 0;
+            UpdateStat();
+
+            Paused = false;
+    }
+
+        //========================================== MAIN MENU ================================================//
+
+        private void OnStartClick(object sender, RoutedEventArgs e)
+        {
+            Paused = false;
+            menuStart.IsEnabled = false;
+            menuStop.IsEnabled = true;
+        }
+
+        private void OnStopClick(object sender, RoutedEventArgs e)
+        {
+            Paused = true;
+            menuStart.IsEnabled = true;
+            menuStop.IsEnabled = false;
+        }
+
+        private void OnRestartClick(object sender, RoutedEventArgs e)
+        {
+            Paused = true;
+            InitGame();
+        }
+
+        private void OnExitClick(object sender, RoutedEventArgs e)
+        {
+            stopped = true;
+            Application.Current.Shutdown();
+        }
+
+        private void OnWindowClose(object sender, EventArgs e)
+        {
+            stopped = true;
+            Application.Current.Shutdown();
+        }
+
+        private void OnAboutClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("C# Tetris\nCopyright (c) r47717", "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         //========================================== PAINTING ================================================//
@@ -206,8 +263,13 @@ namespace Tetris
 
             while (!stopped)
             {
-                Thread.Sleep(Delay);
-                ctx.Post(UpdateUI, null);
+                if(!Paused)
+                {
+                    Thread.Sleep(Delay);
+                    if(!Paused) {
+                        ctx.Post(UpdateUI, null);
+                    }
+                }
             }
 
         }
@@ -390,7 +452,10 @@ namespace Tetris
 
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            lock(lockObj)
+            if (Paused)
+                return;
+
+            lock (lockObj)
             {
                 switch (e.Key)
                 {

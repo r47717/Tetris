@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="R47717 Tetris" Height="500" Width="500" ResizeMode="NoResize" Background="#FFEEEEEE">
+        Title="R47717 Tetris" Height="500" Width="500" ResizeMode="NoResize" Background="#FFEEEEEE" Closed="OnWindowClose" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
@@ -23,6 +23,17 @@
         <Canvas x:Name="previewCanvas" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="10,59,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Background="White"/>
         <Label x:Name="statLabel" Content="Lines: 0" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="10,181,0,0" Grid.Row="1" VerticalAlignment="Top" Width="101"/>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" HorizontalAlignment="Left" Height="102" Margin="9,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102"/>
-
+        <Menu IsMainMenu="True" Name="mainMenu" Grid.ColumnSpan="4">
+            <MenuItem Header="_File" HorizontalAlignment="Left" Width="50">
+                <MenuItem x:Name="menuStart" Header="_Start" Click="OnStartClick" />
+                <MenuItem x:Name="menuStop" Header="S_top" Click="OnStopClick" />
+                <MenuItem x:Name="menuRestart" Header="_Restart" Click="OnRestartClick" />
+                <Separator/>
+                <MenuItem Header="_Exit" Click="OnExitClick" />
+            </MenuItem>
+            <MenuItem Header="_Help" HorizontalAlignment="Left" Width="50">
+                <MenuItem Header="_About..." Click="OnAboutClick" />
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
